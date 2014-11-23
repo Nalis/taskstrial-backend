@@ -1,0 +1,11 @@
+== README
+
+A RESTful server app for managing tasks
+
+= Setup
+
+```
+bundle
+rake db:migrate
+rails s
+```
