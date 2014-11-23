@@ -3,12 +3,21 @@
 <head>
   <title>TaskstrialServer</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= #javascript_include_tag 'application', 'data-turbolinks-track' => true
+  %>
   <%= csrf_meta_tags %>
 </head>
 <body>
 
 <%= yield %>
+<script type="text/x-handlebars" id="posts">
+  Posts
+  <ul>
+    {{#each item in posts}}
+    <li>{{item}}</li>
+    {{/each}}
+  </ul>
+</script>
 
 </body>
 </html>
