@@ -10,6 +10,14 @@
 <body>
 
 <%= yield %>
+<script type="text/x-handlebars" id="posts">
+  Posts
+  <ul>
+    {{#each item in posts}}
+    <li>{{item}}</li>
+    {{/each}}
+  </ul>
+</script>
 
 </body>
 </html>
