@@ -30,7 +30,7 @@ set :assets_prefix, 'prepackaged-assets'   # Defaults to 'assets' this should ma
 
 # Default value for :linked_files is []
 
-set :linked_dirs, %w{log tmp/pids tmp/sockets config/database.yml}
+set :linked_dirs, %w{log tmp/pids tmp/sockets}
 
 # Default value for linked_dirs is []
 # set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system}
