@@ -4,7 +4,7 @@ lock '3.2.1'
 set :application, 'my_app_name'
 set :repo_url, 'ssh://git@git.doc2text.org:4040/leanshore/taskstrial-server.git'
 set :rails_env, 'staging'                  # If the environment differs from the stage name
-set :migration_role, 'migrator'            # Defaults to 'db'
+# set :migration_role, 'migrator'            # Defaults to 'db'
 set :conditionally_migrate, true           # Defaults to false. If true, it's skip migration if files in db/migrate not modified
 set :assets_roles, [:web]            # Defaults to [:web]
 set :assets_prefix, 'prepackaged-assets'   # Defaults to 'assets' this should match config.assets.prefix in your rails config/application.rb
