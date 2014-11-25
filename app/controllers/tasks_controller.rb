@@ -4,6 +4,9 @@ class TasksController < ApplicationController
   # GET /tasks.json
   def index
     @tasks = Task.all
+    respond_to do |format|
+      format.json { render(json: {task: @tasks}, status: :ok) }
+    end
   end
 
   # GET /tasks/1.json
@@ -16,7 +19,7 @@ class TasksController < ApplicationController
 
     respond_to do |format|
       if @task.save
-        format.json { render :show, status: :created, location: @task }
+        format.json { render json: {task: @task}, status: :created }
       else
         format.json { render json: @task.errors, status: :unprocessable_entity }
       end
