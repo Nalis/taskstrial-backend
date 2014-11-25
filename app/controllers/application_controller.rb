@@ -12,14 +12,24 @@ class ApplicationController < ActionController::Base
     render json: [{id: 1, name: 'One'}, {id: 2, name: 'Two'}]
   end
 
-  private
+  def handle_options_request
+    request.headers['HTTP_ORIGIN'] == 'http://localhost:4200' || request.headers['HTTP_ORIGIN'] == 'http://taskstrial.valentinaitken.com'
+    head(:ok) if request.request_method == "OPTIONS"
+  end
 
   def cors_set_access_control_headers
-    headers['Access-Control-Allow-Origin'] = '*'
+    if Rails.env == "development"
+      headers['Access-Control-Allow-Origin'] = 'http://localhost:4200'
+    else
+      headers['Access-Control-Allow-Origin'] = 'http://taskstrial.valentinaitken.com'
+    end
+
     headers['Access-Control-Allow-Methods'] = 'POST, PUT, DELETE, GET, OPTIONS'
     headers['Access-Control-Request-Method'] = '*'
     headers['Access-Control-Allow-Headers'] = 'Origin, X-Requested-With, Content-Type, Accept, Authorization'
   end
+
+  private
 
   def authenticate_user_from_token!
     authenticate_with_http_token do |token, options|

@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
+  match '*path', :controller => 'application', :action => 'handle_options_request', :constraints => {:method => 'OPTIONS'}, via: [:options]
+
   devise_for :users, controllers: { sessions: 'sessions' }
-  resources :tasks
   match 'tasks' => 'tasks#create', :via => [:options, :post]
+  resources :tasks, defaults: {format: 'json'}
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
