@@ -8,3 +8,13 @@
 User.create(name: 'James George Jameson',
             email: 'test@example.org',
             password: 'password')
+
+User.create(name: 'John Smith',
+            email: 'bostko@gmail.com',
+            password: 'password')
+
+User.create(name: 'Valentin Aitken',
+            email: 'yoou@abv.bg',
+            password: 'password')
+
+Task.create(title: 'Task 1', description: 'Desc 1', user: User.last)
