@@ -4,7 +4,9 @@ class TasksController < ApplicationController
 
   # GET /tasks.json
   def index
-    @tasks = Task.all
+    @tasks = Task.includes(:user).map do |t|
+      t.user_id && t.attributes.except(:user_id).merge({user: t.user.slice(:id, :name, :email)}) || t.attributes
+    end
     render(json: {task: @tasks}, status: :ok)
   end
 

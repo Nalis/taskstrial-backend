@@ -1,7 +1,10 @@
 Rails.application.routes.draw do
   match '*path', :controller => 'application', :action => 'handle_options_request', :constraints => {:method => 'OPTIONS'}, via: [:options]
 
+  get 'users' => 'users#index'
+  get 'users/:id' => 'users#show'
   devise_for :users, controllers: { sessions: 'sessions' }
+
   match 'tasks' => 'tasks#create', :via => [:options, :post]
   resources :tasks, defaults: {format: 'json'}
 
