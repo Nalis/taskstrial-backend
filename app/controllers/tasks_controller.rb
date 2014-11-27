@@ -12,6 +12,8 @@ class TasksController < ApplicationController
 
   # GET /tasks/1.json
   def show
+    @task = Task.find(params[:id])
+    render(json: {task: @task.attributes.merge(user: @task.user.slice(:id, :name, :email))}, status: :ok)
   end
 
   # POST /tasks.json
