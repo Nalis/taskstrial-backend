@@ -30,7 +30,7 @@ class TasksController < ApplicationController
   # PATCH/PUT /tasks/1.json
   def update
     if @task.update(task_params)
-      render :show, status: :ok, location: @task
+      render json: {task: @task}, location: @task
     else
       render json: @task.errors, status: :unprocessable_entity
     end
